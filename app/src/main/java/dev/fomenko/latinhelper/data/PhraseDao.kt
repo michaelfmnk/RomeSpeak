@@ -7,9 +7,9 @@ import androidx.room.Query
 
 @Dao
 interface PhraseDao {
-    @Query("SELECT * FROM phraseentity")
-    suspend fun findAll(): List<PhraseEntity>
+    @Query("SELECT * FROM phrases")
+    suspend fun findAll(): List<Phrase>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(phrases: List<PhraseEntity>)
+    suspend fun insertAll(phrases: List<Phrase>)
 }
