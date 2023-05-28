@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchBar(
+    modifier: Modifier = Modifier,
     value: String,
     onValueChange: (String) -> Unit,
 ) {
@@ -33,7 +34,8 @@ fun SearchBar(
         modifier = Modifier
             .fillMaxWidth()
             .padding(15.dp, 15.dp, 15.dp, 5.dp)
-            .clip(shape = RoundedCornerShape(100)),
+            .clip(shape = RoundedCornerShape(100))
+            .then(modifier),
         singleLine = true,
         leadingIcon = { Icon(Icons.Filled.Search, contentDescription = "") },
         value = value,
