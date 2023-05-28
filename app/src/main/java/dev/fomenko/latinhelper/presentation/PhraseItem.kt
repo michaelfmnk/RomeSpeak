@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.fomenko.latinhelper.data.Phrase
 
@@ -47,5 +48,29 @@ fun PhraseItem(
             )
         }
     }
-
 }
+
+@Preview
+@Composable
+fun PhraseItemDefault_Even() {
+    val phrase = Phrase("Nota bene", en = "Note well")
+
+
+    PhraseItem(
+        phrase = phrase,
+        cardColor = EVEN_ROW_COLOR
+    )
+}
+
+
+@Preview
+@Composable
+fun PhraseItemDefault_Odd() {
+    val phrase = Phrase("Nota bene", en = "Note well")
+
+    PhraseItem(
+        phrase = phrase,
+        cardColor = ODD_ROW_COLOR
+    )
+}
+
