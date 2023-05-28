@@ -16,7 +16,6 @@ import androidx.compose.ui.unit.dp
 import dev.fomenko.latinhelper.data.Phrase
 
 
-
 @Composable
 fun PhraseItem(
     modifier: Modifier = Modifier,
