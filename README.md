@@ -1,6 +1,6 @@
-# Phrase Learning App
+# LatinHelper
 
-The Phrase Learning App is an Android application that helps users learn and practice Latin phrases
+The LatinHelper is an Android app that helps users learn and practice Latin phrases
 in multiple languages. It provides a collection of phrases along with their translations, allowing
 users to expand their vocabulary.
 
