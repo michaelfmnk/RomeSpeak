@@ -12,4 +12,9 @@ interface PhraseDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(phrases: List<Phrase>)
+
+    @Query("""SELECT * FROM phrases WHERE phrase LIKE '%' || :query || '%' 
+        OR en LIKE '%' || :query || '%'
+        OR uk LIKE '%' || :query || '%'""")
+    suspend fun search(query: String): List<Phrase>
 }

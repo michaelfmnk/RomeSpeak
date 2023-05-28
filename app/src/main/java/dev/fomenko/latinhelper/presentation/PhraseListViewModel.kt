@@ -17,13 +17,11 @@ class PhraseListViewModel @Inject constructor(
     private val _phrases: MutableStateFlow<List<Phrase>> = MutableStateFlow(listOf())
     val phrases: StateFlow<List<Phrase>> = _phrases.asStateFlow()
 
-
-    fun onFavoriteClick(phraseKey: String) {
-
-    }
-
     suspend fun loadPhrases() {
         _phrases.value = phraseDao.findAll()
-        Log.d("PhraseListViewModel", "loadPhrases: ${_phrases.value}")
+    }
+
+    suspend fun searchPhrases(term: String) {
+        _phrases.value = phraseDao.search(term)
     }
 }
