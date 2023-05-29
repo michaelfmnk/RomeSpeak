@@ -1,0 +1,58 @@
+package dev.fomenko.latinhelper.presentation
+
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.BottomSheetScaffold
+import androidx.compose.material3.BottomSheetScaffoldState
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import dev.fomenko.latinhelper.data.Phrase
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PhraseListSortSheet(
+    sortSheetState: BottomSheetScaffoldState,
+    onSortSelected: (Phrase.() -> String) -> Unit,
+) {
+    BottomSheetScaffold(
+        scaffoldState = sortSheetState,
+        sheetPeekHeight = 0.dp,
+        sheetContent = {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(15.dp, 0.dp, 0.dp, 50.dp)
+            ) {
+                Text(
+                    text = "Sort by",
+                    modifier = Modifier
+                        .padding(0.dp, 15.dp),
+                    style = MaterialTheme.typography.bodySmall
+                )
+                Text(
+                    text = "Latin",
+
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .clickable {
+                            onSortSelected { phrase }
+                        }
+                )
+                Text(
+                    text = "English",
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .clickable {
+                            onSortSelected { en }
+                        }
+                )
+            }
+        }) {
+    }
+}
