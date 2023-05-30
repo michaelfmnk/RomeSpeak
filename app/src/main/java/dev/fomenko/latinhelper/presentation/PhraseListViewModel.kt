@@ -9,4 +9,5 @@ interface PhraseListViewModel {
     suspend fun loadPhrases()
     suspend fun searchPhrases(term: String)
     fun sortBy(keyExtractor: (Phrase) -> String)
+    suspend fun markAsFavorite(phrase: Phrase)
 }

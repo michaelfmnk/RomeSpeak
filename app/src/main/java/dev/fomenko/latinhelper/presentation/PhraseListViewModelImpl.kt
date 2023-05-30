@@ -28,4 +28,15 @@ class PhraseListViewModelImpl @Inject constructor(
         _phrases.value = _phrases.value.sortedBy(keyExtractor)
     }
 
+    override suspend fun markAsFavorite(phrase: Phrase) {
+        _phrases.value = _phrases.value.map { currentPhrase ->
+            if (currentPhrase == phrase) {
+                currentPhrase.copy(isFavorite = !currentPhrase.isFavorite).also {
+                    phraseDao.save(it)
+                }
+            } else {
+                currentPhrase
+            }
+        }
+    }
 }

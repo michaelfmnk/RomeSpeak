@@ -77,10 +77,15 @@ fun PhraseListScreen(
         ) {
             items(phrases.value.size) { index ->
                 val color = if (index % 2 == 0) EVEN_ROW_COLOR else ODD_ROW_COLOR
-                PhraseItem(
+                PhraseListItem(
                     modifier = Modifier.padding(15.dp, 5.dp),
                     cardColor = color,
                     phrase = phrases.value[index],
+                    onFavoriteClick = {
+                        scope.launch {
+                            viewModel.markAsFavorite(phrases.value[index])
+                        }
+                    }
                 )
             }
         }
@@ -137,6 +142,10 @@ fun PhraseListScreenPreview() {
         }
 
         override fun sortBy(keyExtractor: (Phrase) -> String) {
+        }
+
+        override suspend fun markAsFavorite(phrase: Phrase) {
+
         }
     }
 

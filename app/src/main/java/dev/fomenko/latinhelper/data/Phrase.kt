@@ -9,7 +9,9 @@ data class Phrase(
     @PrimaryKey val phrase: String = "",
     val en: String = "",
     val uk: String = "",
+    var isFavorite: Boolean = false
 ) {
+
     fun translation(lang: Locale): String {
         return when (lang.language) {
             "en" -> en
