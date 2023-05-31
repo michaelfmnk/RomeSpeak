@@ -1,6 +1,6 @@
-# LatinHelper
+# RomeSpeak: Latin Phrasebook
 
-The LatinHelper is an Android app that helps users learn and practice Latin phrases
+The RomeSpeak is an Android app that helps users learn and practice Latin phrases
 in multiple languages. It provides a collection of phrases along with their translations, allowing
 users to expand their vocabulary.
 
