@@ -20,3 +20,11 @@ data class Phrase(
         }
     }
 }
+
+enum class PhraseSort(
+    var column: String,
+    var keyExtractor: (Phrase) -> String
+) {
+    Latin("phrase", { it.phrase }),
+    English("en", { it.en })
+}

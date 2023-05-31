@@ -13,12 +13,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.fomenko.latinhelper.data.Phrase
+import dev.fomenko.latinhelper.data.PhraseSort
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PhraseListSortSheet(
     sortSheetState: BottomSheetScaffoldState,
-    onSortSelected: (Phrase.() -> String) -> Unit,
+    onSortSelected: (PhraseSort) -> Unit,
 ) {
     BottomSheetScaffold(
         scaffoldState = sortSheetState,
@@ -41,7 +42,7 @@ fun PhraseListSortSheet(
                     modifier = Modifier
                         .padding(10.dp)
                         .clickable {
-                            onSortSelected { phrase }
+                            onSortSelected(PhraseSort.Latin)
                         }
                 )
                 Text(
@@ -49,7 +50,7 @@ fun PhraseListSortSheet(
                     modifier = Modifier
                         .padding(10.dp)
                         .clickable {
-                            onSortSelected { en }
+                            onSortSelected(PhraseSort.English)
                         }
                 )
             }
