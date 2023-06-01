@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
@@ -21,7 +22,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,10 +33,6 @@ import dev.fomenko.latinhelper.ui.theme.LatinHelperTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-
-
-val EVEN_ROW_COLOR = Color(0xffe1e2ec)
-val ODD_ROW_COLOR = Color(0xfff1f2fc)
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -86,7 +82,8 @@ fun PhraseListScreen(
                 contentPadding = PaddingValues(top = 20.dp)
             ) {
                 items(phrases.value.size) { index ->
-                    val color = if (index % 2 == 0) EVEN_ROW_COLOR else ODD_ROW_COLOR
+                    val color =
+                        if (index % 2 == 0) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.secondaryContainer
                     PhraseListItem(modifier = Modifier.padding(15.dp, 5.dp),
                         cardColor = color,
                         phrase = phrases.value[index],
