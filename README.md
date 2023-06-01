@@ -1,4 +1,6 @@
-# RomeSpeak: Latin Phrasebook
+
+
+# <img src="app/src/main/res/mipmap-xhdpi/ic_launcher.png" width="70"/> RomeSpeak: Latin Phrasebook
 
 The RomeSpeak is an Android app that helps users learn and practice Latin phrases
 in multiple languages. It provides a collection of phrases along with their translations, allowing
