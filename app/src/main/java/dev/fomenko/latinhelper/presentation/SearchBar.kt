@@ -17,8 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import dev.fomenko.latinhelper.R
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -30,14 +32,19 @@ fun SearchBar(
     val keyboardController = LocalSoftwareKeyboardController.current
 
     TextField(
-        placeholder = { Text("Search") },
+        placeholder = { Text(stringResource(id = R.string.search_placeholder)) },
         modifier = Modifier
             .fillMaxWidth()
             .padding(15.dp, 15.dp, 15.dp, 5.dp)
             .clip(shape = RoundedCornerShape(100))
             .then(modifier),
         singleLine = true,
-        leadingIcon = { Icon(Icons.Filled.Search, contentDescription = "") },
+        leadingIcon = {
+            Icon(
+                Icons.Filled.Search,
+                contentDescription = stringResource(id = R.string.search_placeholder)
+            )
+        },
         value = value,
         onValueChange = onValueChange,
         colors = TextFieldDefaults.colors(

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RomeSpeak</string>
+    <string name="tab_all">Усі фрази</string>
+    <string name="tab_favorites">Улюблені</string>
+    <string name="sort_by">Сортувати за</string>
+    <string name="sort_by_latin">Латинською</string>
+    <string name="sort_by_english">Англійською</string>
+    <string name="sort_by_ukrainian">Українською</string>
+    <string name="search_placeholder">Пошук</string>
+</resources>

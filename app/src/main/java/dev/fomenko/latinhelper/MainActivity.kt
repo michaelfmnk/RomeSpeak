@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
-import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import dev.fomenko.latinhelper.presentation.PhraseListScreen
 import dev.fomenko.latinhelper.ui.theme.LatinHelperTheme

@@ -2,6 +2,7 @@ package dev.fomenko.latinhelper.presentation
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.fomenko.latinhelper.R
 import dev.fomenko.latinhelper.data.Phrase
 import dev.fomenko.latinhelper.data.PhraseDao
 import dev.fomenko.latinhelper.data.PhraseSort
@@ -53,9 +54,15 @@ class PhraseListViewModelImpl @Inject constructor(
 }
 
 enum class PhraseListTab(
-    val tabName: String,
+    val title: Int,
     val fetcher: suspend (PhraseDao, String) -> List<Phrase>
 ) {
-    All("All", { dao, query -> dao.search(query) }),
-    Favorite("Favorite", { dao, query -> dao.searchFavorite(query) }),
+    All(
+        R.string.tab_all,
+        { dao, query -> dao.search(query) }
+    ),
+    Favorite(
+        R.string.tab_favorites,
+        { dao, query -> dao.searchFavorite(query) }
+    ),
 }

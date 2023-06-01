@@ -11,8 +11,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import dev.fomenko.latinhelper.data.Phrase
+import dev.fomenko.latinhelper.R
 import dev.fomenko.latinhelper.data.PhraseSort
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -31,13 +32,13 @@ fun PhraseListSortSheet(
                     .padding(15.dp, 0.dp, 0.dp, 50.dp)
             ) {
                 Text(
-                    text = "Sort by",
+                    text = stringResource(id = R.string.sort_by),
                     modifier = Modifier
                         .padding(0.dp, 15.dp),
                     style = MaterialTheme.typography.bodySmall
                 )
                 Text(
-                    text = "Latin",
+                    text = stringResource(id = R.string.sort_by_latin),
 
                     modifier = Modifier
                         .padding(10.dp)
@@ -46,7 +47,7 @@ fun PhraseListSortSheet(
                         }
                 )
                 Text(
-                    text = "English",
+                    text = stringResource(id = R.string.sort_by_english),
                     modifier = Modifier
                         .padding(10.dp)
                         .clickable {

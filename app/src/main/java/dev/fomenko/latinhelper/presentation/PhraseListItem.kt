@@ -15,7 +15,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,6 +29,7 @@ fun PhraseListItem(
     modifier: Modifier = Modifier,
     phrase: Phrase,
     cardColor: Color,
+    locale: Locale = Locale.current,
     onFavoriteClick: () -> Unit = {},
 ) {
 
@@ -55,7 +55,7 @@ fun PhraseListItem(
                     modifier = Modifier.padding(0.dp, 8.dp, 0.dp, 8.dp)
                 )
                 Text(
-                    text = phrase.translation(Locale.current),
+                    text = phrase.translation(locale),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }

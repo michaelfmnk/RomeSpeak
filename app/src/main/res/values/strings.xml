@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">RomeSpeak</string>
+    <string name="tab_all">All</string>
+    <string name="tab_favorites">Favorites</string>
+    <string name="sort_by">Sort by</string>
+    <string name="sort_by_latin">Latin</string>
+    <string name="sort_by_english">English</string>
+    <string name="sort_by_ukrainian">Ukrainian</string>
+    <string name="search_placeholder">Search</string>
 </resources>
