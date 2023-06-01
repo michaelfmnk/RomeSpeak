@@ -28,7 +28,7 @@ import dev.fomenko.latinhelper.data.Phrase
 fun PhraseListItem(
     modifier: Modifier = Modifier,
     phrase: Phrase,
-    cardColor: Color,
+    cardColor: Color = MaterialTheme.colorScheme.primaryContainer,
     locale: Locale = Locale.current,
     onFavoriteClick: () -> Unit = {},
 ) {
@@ -68,7 +68,7 @@ fun PhraseListItem(
                 Icon(
                     imageVector = Icons.Outlined.Star,
                     contentDescription = "Favorite",
-                    tint = if (phrase.isFavorite) MaterialTheme.colorScheme.primary else Color.Gray
+                    tint = if (phrase.isFavorite) MaterialTheme.colorScheme.tertiary else Color.Gray
                 )
             }
         }
@@ -80,10 +80,7 @@ fun PhraseListItem(
 fun PhraseItemDefault_Even() {
     val phrase = Phrase("Nota bene", en = "Note well")
 
-
-    PhraseListItem(
-        phrase = phrase, cardColor = EVEN_ROW_COLOR
-    )
+    PhraseListItem(phrase = phrase)
 }
 
 
@@ -92,8 +89,6 @@ fun PhraseItemDefault_Even() {
 fun PhraseItemDefault_Odd() {
     val phrase = Phrase("Nota bene", en = "Note well")
 
-    PhraseListItem(
-        phrase = phrase, cardColor = ODD_ROW_COLOR
-    )
+    PhraseListItem(phrase = phrase)
 }
 
