@@ -17,7 +17,6 @@ class DatabaseModule {
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
-        context.deleteDatabase("LatinHelper")
         return Room.databaseBuilder(
             context, AppDatabase::class.java, "LatinHelper"
         ).createFromAsset("LatinHelper.db").build()
