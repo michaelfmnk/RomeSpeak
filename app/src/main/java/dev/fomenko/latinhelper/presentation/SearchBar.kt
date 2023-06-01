@@ -6,8 +6,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.Clear
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -40,10 +43,19 @@ fun SearchBar(
             .then(modifier),
         singleLine = true,
         leadingIcon = {
-            Icon(
-                Icons.Filled.Search,
-                contentDescription = stringResource(id = R.string.search_placeholder)
-            )
+            if (value.isNotEmpty()) {
+                IconButton(onClick = { onValueChange("") }) {
+                    Icon(
+                        Icons.Outlined.Clear,
+                        contentDescription = stringResource(id = R.string.clear_search)
+                    )
+                }
+            } else {
+                Icon(
+                    Icons.Filled.Search,
+                    contentDescription = stringResource(id = R.string.search_placeholder)
+                )
+            }
         },
         value = value,
         onValueChange = onValueChange,

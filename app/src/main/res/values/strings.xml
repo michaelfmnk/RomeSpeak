@@ -7,4 +7,5 @@
     <string name="sort_by_english">English</string>
     <string name="sort_by_ukrainian">Ukrainian</string>
     <string name="search_placeholder">Search</string>
+    <string name="clear_search">clear search</string>
 </resources>

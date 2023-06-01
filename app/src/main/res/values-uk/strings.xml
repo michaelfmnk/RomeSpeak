@@ -8,4 +8,5 @@
     <string name="sort_by_english">Англійською</string>
     <string name="sort_by_ukrainian">Українською</string>
     <string name="search_placeholder">Пошук</string>
+    <string name="clear_search">Очистити</string>
 </resources>
