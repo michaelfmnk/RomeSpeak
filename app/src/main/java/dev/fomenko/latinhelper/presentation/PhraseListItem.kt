@@ -1,9 +1,11 @@
 package dev.fomenko.latinhelper.presentation
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -46,7 +48,9 @@ fun PhraseListItem(
 
             Column(
                 modifier = Modifier
+                    .weight(7f)
                     .padding(16.dp)
+                    .border(1.dp, Color.Red, MaterialTheme.shapes.small)
             ) {
                 Text(
                     text = phrase.phrase, style = MaterialTheme.typography.bodyLarge
@@ -61,8 +65,11 @@ fun PhraseListItem(
             }
             IconButton(
                 modifier = Modifier
+                    .weight(1f)
                     .align(CenterVertically)
-                    .padding(end = 10.dp, top = 10.dp),
+                    .fillMaxHeight()
+                    .border(1.dp, Color.Gray, MaterialTheme.shapes.small)
+                    .padding(10.dp),
                 onClick = onFavoriteClick
             ) {
                 Icon(
@@ -78,7 +85,7 @@ fun PhraseListItem(
 @Preview
 @Composable
 fun PhraseItemDefault_Even() {
-    val phrase = Phrase("Nota bene", en = "Note well")
+    val phrase = Phrase("Nota bene as;ldkfja;lksdf ja;slkdf asdfadsf", en = "Note well")
 
     PhraseListItem(phrase = phrase)
 }
