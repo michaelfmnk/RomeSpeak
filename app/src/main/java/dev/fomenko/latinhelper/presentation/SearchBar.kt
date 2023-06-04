@@ -47,13 +47,13 @@ fun SearchBar(
                 IconButton(onClick = { onValueChange("") }) {
                     Icon(
                         Icons.Outlined.Clear,
-                        contentDescription = stringResource(id = R.string.clear_search)
+                        contentDescription = stringResource(id = R.string.clear_search),
                     )
                 }
             } else {
                 Icon(
                     Icons.Filled.Search,
-                    contentDescription = stringResource(id = R.string.search_placeholder)
+                    contentDescription = stringResource(id = R.string.search_placeholder),
                 )
             }
         },
@@ -65,12 +65,12 @@ fun SearchBar(
             unfocusedIndicatorColor = Color.Transparent,
         ),
         keyboardOptions = KeyboardOptions(
-            imeAction = ImeAction.Search
+            imeAction = ImeAction.Search,
         ),
         keyboardActions = KeyboardActions(
             onSearch = {
                 keyboardController?.hide()
-            }
-        )
+            },
+        ),
     )
 }

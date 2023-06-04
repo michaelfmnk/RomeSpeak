@@ -27,7 +27,6 @@ class PhraseListViewModelImpl @Inject constructor(
     private val _query = MutableStateFlow("")
     override val query: StateFlow<String> = _query.asStateFlow()
 
-
     override suspend fun loadPhrases() {
         _phrases.value = _selectedTab.value.fetcher(phraseDao, query.value)
         sortBy(sort.value)
@@ -55,14 +54,14 @@ class PhraseListViewModelImpl @Inject constructor(
 
 enum class PhraseListTab(
     val title: Int,
-    val fetcher: suspend (PhraseDao, String) -> List<Phrase>
+    val fetcher: suspend (PhraseDao, String) -> List<Phrase>,
 ) {
     All(
         R.string.tab_all,
-        { dao, query -> dao.search(query) }
+        { dao, query -> dao.search(query) },
     ),
     Favorite(
         R.string.tab_favorites,
-        { dao, query -> dao.searchFavorite(query) }
+        { dao, query -> dao.searchFavorite(query) },
     ),
 }

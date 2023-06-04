@@ -6,6 +6,4 @@ import androidx.room.RoomDatabase
 @Database(entities = [Phrase::class], exportSchema = false, version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun phraseDao(): PhraseDao
-
 }
-

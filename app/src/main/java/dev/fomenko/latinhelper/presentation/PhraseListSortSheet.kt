@@ -20,13 +20,13 @@ fun PhraseListSortSheet(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 15.dp, end = 15.dp, bottom = 15.dp)
+            .padding(start = 15.dp, end = 15.dp, bottom = 15.dp),
     ) {
         Text(
             text = stringResource(id = R.string.sort_by),
             modifier = Modifier
                 .padding(0.dp, 15.dp),
-            style = MaterialTheme.typography.bodySmall
+            style = MaterialTheme.typography.bodySmall,
         )
         Text(
             text = stringResource(id = R.string.sort_by_latin),
@@ -35,7 +35,7 @@ fun PhraseListSortSheet(
                 .padding(10.dp)
                 .clickable {
                     onSortSelected(PhraseSort.Latin)
-                }
+                },
         )
         Text(
             text = stringResource(id = R.string.sort_by_english),
@@ -43,7 +43,7 @@ fun PhraseListSortSheet(
                 .padding(10.dp)
                 .clickable {
                     onSortSelected(PhraseSort.English)
-                }
+                },
         )
     }
 }

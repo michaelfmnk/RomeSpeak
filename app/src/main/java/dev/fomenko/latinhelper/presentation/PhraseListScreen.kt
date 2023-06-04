@@ -35,11 +35,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PhraseListScreen(
-    viewModel: PhraseListViewModel = hiltViewModel<PhraseListViewModelImpl>()
+    viewModel: PhraseListViewModel = hiltViewModel<PhraseListViewModelImpl>(),
 ) {
     val scope = rememberCoroutineScope()
 
@@ -49,8 +48,9 @@ fun PhraseListScreen(
     val query = viewModel.query.collectAsState()
     val sortSheetState = rememberBottomSheetScaffoldState(
         bottomSheetState = rememberStandardBottomSheetState(
-            skipHiddenState = false, initialValue = SheetValue.Hidden
-        )
+            skipHiddenState = false,
+            initialValue = SheetValue.Hidden,
+        ),
     )
 
     LaunchedEffect(true) {
@@ -74,9 +74,8 @@ fun PhraseListScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddings)
+                .padding(paddings),
         ) {
-
             SearchBar(value = query.value, onValueChange = {
                 scope.launch {
                     viewModel.searchPhrases(it)
@@ -90,23 +89,24 @@ fun PhraseListScreen(
             })
 
             LazyColumn(
-                contentPadding = PaddingValues(top = 20.dp)
+                contentPadding = PaddingValues(top = 20.dp),
             ) {
                 items(phrases.value.size) { index ->
                     val color =
                         if (index % 2 == 0) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.secondaryContainer
-                    PhraseListItem(modifier = Modifier.padding(15.dp, 5.dp),
+                    PhraseListItem(
+                        modifier = Modifier.padding(15.dp, 5.dp),
                         cardColor = color,
                         phrase = phrases.value[index],
                         onFavoriteClick = {
                             scope.launch {
                                 viewModel.markAsFavorite(phrases.value[index])
                             }
-                        })
+                        },
+                    )
                 }
             }
         }
-
     }
 }
 
@@ -116,7 +116,7 @@ fun PhraseListScreenScaffold(
     bottomSheetState: BottomSheetScaffoldState,
     sheetContent: @Composable ColumnScope.() -> Unit,
     bottomBar: @Composable () -> Unit,
-    content: @Composable (PaddingValues) -> Unit
+    content: @Composable (PaddingValues) -> Unit,
 ) {
     BottomSheetScaffold(
         scaffoldState = bottomSheetState,
@@ -128,19 +128,21 @@ fun PhraseListScreenScaffold(
 
 @Composable
 fun Tabs(
-    selectedTab: State<PhraseListTab>, onSwitchTab: (PhraseListTab) -> Unit
+    selectedTab: State<PhraseListTab>,
+    onSwitchTab: (PhraseListTab) -> Unit,
 ) {
     TabRow(selectedTabIndex = selectedTab.value.ordinal) {
         PhraseListTab.values().forEach { tab ->
-            Tab(text = { Text(text = stringResource(tab.title)) },
+            Tab(
+                text = { Text(text = stringResource(tab.title)) },
                 selected = selectedTab.value == tab,
                 onClick = {
                     onSwitchTab(tab)
-                })
+                },
+            )
         }
     }
 }
-
 
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
@@ -158,9 +160,11 @@ fun PhraseListScreenPreview() {
                 Phrase("Carpe diem", en = "Seize the day", uk = "Схопи день"),
                 Phrase("Carpe diem", en = "Seize the day", uk = "Схопи день"),
                 Phrase(
-                    "Cogito, ergo sum", en = "I think, therefore I am", uk = "Я думаю, отже я є"
+                    "Cogito, ergo sum",
+                    en = "I think, therefore I am",
+                    uk = "Я думаю, отже я є",
                 ),
-            )
+            ),
         )
         override val selectedTab: StateFlow<PhraseListTab> = MutableStateFlow(PhraseListTab.All)
 
@@ -174,7 +178,6 @@ fun PhraseListScreenPreview() {
         }
 
         override suspend fun markAsFavorite(phrase: Phrase) {
-
         }
 
         override suspend fun switchTab(tab: PhraseListTab) {

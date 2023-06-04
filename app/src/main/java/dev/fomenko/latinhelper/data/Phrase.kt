@@ -9,7 +9,7 @@ data class Phrase(
     @PrimaryKey val phrase: String = "",
     val en: String = "",
     val uk: String = "",
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean = false,
 ) {
 
     fun translation(lang: Locale): String {
@@ -23,8 +23,8 @@ data class Phrase(
 
 enum class PhraseSort(
     var column: String,
-    var keyExtractor: (Phrase) -> String
+    var keyExtractor: (Phrase) -> String,
 ) {
     Latin("phrase", { it.phrase }),
-    English("en", { it.en })
+    English("en", { it.en }),
 }

@@ -14,5 +14,4 @@ interface PhraseListViewModel {
     suspend fun sortBy(sort: PhraseSort)
     suspend fun markAsFavorite(phrase: Phrase)
     suspend fun switchTab(tab: PhraseListTab)
-
 }

@@ -14,7 +14,7 @@ import dev.fomenko.latinhelper.R
 @Composable
 fun PhraseListBottomAppBar(
     modifier: Modifier = Modifier,
-    onSortClicked: () -> Unit
+    onSortClicked: () -> Unit,
 ) {
     BottomAppBar(
         modifier = modifier,
@@ -23,9 +23,9 @@ fun PhraseListBottomAppBar(
                 Icon(
                     painter = painterResource(id = R.drawable.sort_by_alpha),
                     modifier = Modifier.padding(7.dp),
-                    contentDescription = stringResource(id = R.string.sort_by)
+                    contentDescription = stringResource(id = R.string.sort_by),
                 )
             }
-        }
+        },
     )
 }

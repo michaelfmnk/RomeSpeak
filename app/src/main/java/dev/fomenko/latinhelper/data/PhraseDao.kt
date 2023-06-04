@@ -14,7 +14,7 @@ interface PhraseDao {
     @Query(
         """SELECT * FROM phrases WHERE phrase LIKE '%' || :query || '%' 
         OR en LIKE '%' || :query || '%'
-        OR uk LIKE '%' || :query || '%'"""
+        OR uk LIKE '%' || :query || '%'""",
     )
     suspend fun search(query: String): List<Phrase>
 
@@ -22,7 +22,7 @@ interface PhraseDao {
         """SELECT * FROM phrases WHERE (phrase LIKE '%' || :query || '%' 
         OR en LIKE '%' || :query || '%'
         OR uk LIKE '%' || :query || '%')
-        AND isFavorite = 1"""
+        AND isFavorite = 1""",
     )
     suspend fun searchFavorite(query: String): List<Phrase>
 
@@ -31,5 +31,4 @@ interface PhraseDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(phrase: Phrase)
-
 }

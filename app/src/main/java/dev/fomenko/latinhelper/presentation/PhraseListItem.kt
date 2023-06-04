@@ -25,7 +25,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.fomenko.latinhelper.data.Phrase
 
-
 @Composable
 fun PhraseListItem(
     modifier: Modifier = Modifier,
@@ -34,33 +33,32 @@ fun PhraseListItem(
     locale: Locale = Locale.current,
     onFavoriteClick: () -> Unit = {},
 ) {
-
     Card(
         modifier = modifier,
         colors = CardDefaults.cardColors(
-            containerColor = cardColor
+            containerColor = cardColor,
         ),
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-
             Column(
                 modifier = Modifier
                     .weight(7f)
                     .padding(16.dp)
-                    .border(1.dp, Color.Red, MaterialTheme.shapes.small)
+                    .border(1.dp, Color.Red, MaterialTheme.shapes.small),
             ) {
                 Text(
-                    text = phrase.phrase, style = MaterialTheme.typography.bodyLarge
+                    text = phrase.phrase,
+                    style = MaterialTheme.typography.bodyLarge,
                 )
                 Spacer(
-                    modifier = Modifier.padding(0.dp, 8.dp, 0.dp, 8.dp)
+                    modifier = Modifier.padding(0.dp, 8.dp, 0.dp, 8.dp),
                 )
                 Text(
                     text = phrase.translation(locale),
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodyMedium,
                 )
             }
             IconButton(
@@ -70,12 +68,12 @@ fun PhraseListItem(
                     .fillMaxHeight()
                     .border(1.dp, Color.Gray, MaterialTheme.shapes.small)
                     .padding(10.dp),
-                onClick = onFavoriteClick
+                onClick = onFavoriteClick,
             ) {
                 Icon(
                     imageVector = Icons.Outlined.Star,
                     contentDescription = "Favorite",
-                    tint = if (phrase.isFavorite) MaterialTheme.colorScheme.tertiary else Color.Gray
+                    tint = if (phrase.isFavorite) MaterialTheme.colorScheme.tertiary else Color.Gray,
                 )
             }
         }
@@ -90,7 +88,6 @@ fun PhraseItemDefault_Even() {
     PhraseListItem(phrase = phrase)
 }
 
-
 @Preview
 @Composable
 fun PhraseItemDefault_Odd() {
@@ -98,4 +95,3 @@ fun PhraseItemDefault_Odd() {
 
     PhraseListItem(phrase = phrase)
 }
-

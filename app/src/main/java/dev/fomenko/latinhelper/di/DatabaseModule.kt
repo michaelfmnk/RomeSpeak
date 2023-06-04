@@ -18,7 +18,9 @@ class DatabaseModule {
     @Provides
     fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
         return Room.databaseBuilder(
-            context, AppDatabase::class.java, "LatinHelper"
+            context,
+            AppDatabase::class.java,
+            "LatinHelper",
         ).createFromAsset("LatinHelper.db").build()
     }
 
