@@ -1,14 +1,17 @@
 package dev.fomenko.latinhelper.presentation
 
-import androidx.compose.foundation.layout.Box
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.BottomSheetScaffold
+import androidx.compose.material3.BottomSheetScaffoldState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
@@ -20,12 +23,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.zIndex
 import androidx.hilt.navigation.compose.hiltViewModel
 import dev.fomenko.latinhelper.data.Phrase
 import dev.fomenko.latinhelper.data.PhraseSort
@@ -56,21 +57,31 @@ fun PhraseListScreen(
         viewModel.loadPhrases()
     }
 
-    Box(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Column(modifier = Modifier.fillMaxSize()) {
-            Column(
-                modifier = Modifier.statusBarsPadding()
-            ) {
-
-                SearchBar(value = query.value, onValueChange = {
-                    scope.launch {
-                        viewModel.searchPhrases(it)
-                    }
-                })
-
+    PhraseListScreenScaffold(bottomSheetState = sortSheetState, sheetContent = {
+        PhraseListSortSheet(onSortSelected = {
+            scope.launch {
+                sortSheetState.bottomSheetState.toggle()
+                viewModel.sortBy(it)
             }
+        })
+    }, bottomBar = {
+        PhraseListBottomAppBar(onSortClicked = {
+            scope.launch {
+                sortSheetState.bottomSheetState.toggle()
+            }
+        })
+    }) { paddings ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddings)
+        ) {
+
+            SearchBar(value = query.value, onValueChange = {
+                scope.launch {
+                    viewModel.searchPhrases(it)
+                }
+            })
 
             Tabs(selectedTab = selectedTab, onSwitchTab = {
                 scope.launch {
@@ -96,32 +107,22 @@ fun PhraseListScreen(
             }
         }
 
-        Box(
-            modifier = Modifier
-                .zIndex(10f)
-        ) {
-            PhraseListSortSheet(
-                sortSheetState = sortSheetState,
-                onSortSelected = {
-                    scope.launch {
-                        sortSheetState.bottomSheetState.toggle()
-                        viewModel.sortBy(it)
-                    }
-                }
-            )
-        }
+    }
+}
 
-        Box(
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .zIndex(1f)
-        ) {
-            PhraseListBottomAppBar(onSortClicked = {
-                scope.launch {
-                    sortSheetState.bottomSheetState.toggle()
-                }
-            })
-        }
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+fun PhraseListScreenScaffold(
+    bottomSheetState: BottomSheetScaffoldState,
+    sheetContent: @Composable ColumnScope.() -> Unit,
+    bottomBar: @Composable () -> Unit,
+    content: @Composable (PaddingValues) -> Unit
+) {
+    BottomSheetScaffold(
+        scaffoldState = bottomSheetState,
+        sheetContent = sheetContent,
+    ) {
+        Scaffold(bottomBar = bottomBar, content = content)
     }
 }
 
@@ -141,8 +142,8 @@ fun Tabs(
 }
 
 
-@Preview
 @Composable
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 fun PhraseListScreenPreview() {
     val viewModel = object : PhraseListViewModel {
         override val query: StateFlow<String> = MutableStateFlow("")
@@ -151,6 +152,10 @@ fun PhraseListScreenPreview() {
         override val phrases: StateFlow<List<Phrase>> = MutableStateFlow(
             listOf(
                 Phrase("Nota bene", en = "Note well", uk = "Зверни увагу"),
+                Phrase("Carpe diem", en = "Seize the day", uk = "Схопи день"),
+                Phrase("Carpe diem", en = "Seize the day", uk = "Схопи день"),
+                Phrase("Carpe diem", en = "Seize the day", uk = "Схопи день"),
+                Phrase("Carpe diem", en = "Seize the day", uk = "Схопи день"),
                 Phrase("Carpe diem", en = "Seize the day", uk = "Схопи день"),
                 Phrase(
                     "Cogito, ergo sum", en = "I think, therefore I am", uk = "Я думаю, отже я є"

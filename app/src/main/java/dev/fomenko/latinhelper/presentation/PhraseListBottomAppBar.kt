@@ -13,9 +13,11 @@ import dev.fomenko.latinhelper.R
 
 @Composable
 fun PhraseListBottomAppBar(
+    modifier: Modifier = Modifier,
     onSortClicked: () -> Unit
 ) {
     BottomAppBar(
+        modifier = modifier,
         actions = {
             IconButton(onClick = onSortClicked) {
                 Icon(
