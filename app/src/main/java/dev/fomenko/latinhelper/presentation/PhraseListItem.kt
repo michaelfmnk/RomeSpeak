@@ -45,9 +45,8 @@ fun PhraseListItem(
         ) {
             Column(
                 modifier = Modifier
-                    .weight(7f)
+                    .weight(8f)
                     .padding(16.dp)
-                    .border(1.dp, Color.Red, MaterialTheme.shapes.small),
             ) {
                 Text(
                     text = phrase.phrase,
@@ -63,10 +62,9 @@ fun PhraseListItem(
             }
             IconButton(
                 modifier = Modifier
-                    .weight(1f)
+                    .weight(2f)
                     .align(CenterVertically)
                     .fillMaxHeight()
-                    .border(1.dp, Color.Gray, MaterialTheme.shapes.small)
                     .padding(10.dp),
                 onClick = onFavoriteClick,
             ) {
