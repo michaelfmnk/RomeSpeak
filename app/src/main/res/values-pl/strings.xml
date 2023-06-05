@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RomeSpeak</string>
+    <string name="tab_all">Wszystkie</string>
+    <string name="tab_favorites">Ulubione</string>
+    <string name="sort_by">Sortuj według</string>
+    <string name="sort_by_latin">Łaciński</string>
+    <string name="sort_by_current_language">Polski</string>
+    <string name="search_placeholder">Szukaj</string>
+    <string name="clear_search">Wyczyść</string>
+</resources>
