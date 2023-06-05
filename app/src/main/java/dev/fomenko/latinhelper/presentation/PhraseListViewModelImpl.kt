@@ -33,7 +33,7 @@ class PhraseListViewModelImpl @Inject constructor(
     }
 
     override suspend fun sortBy(sort: PhraseSort) {
-        _phrases.value = _phrases.value.sortedBy(sort.keyExtractor)
+        _phrases.value = _phrases.value.sortedWith(sort.comparator)
     }
 
     override suspend fun searchPhrases(term: String) {

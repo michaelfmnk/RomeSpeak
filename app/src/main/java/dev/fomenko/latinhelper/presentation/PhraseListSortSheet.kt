@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import dev.fomenko.latinhelper.R
 import dev.fomenko.latinhelper.data.PhraseSort
@@ -38,11 +39,11 @@ fun PhraseListSortSheet(
                 },
         )
         Text(
-            text = stringResource(id = R.string.sort_by_english),
+            text = stringResource(id = R.string.sort_by_current_language),
             modifier = Modifier
                 .padding(10.dp)
                 .clickable {
-                    onSortSelected(PhraseSort.English)
+                    onSortSelected(PhraseSort.valueOf(Locale.current))
                 },
         )
     }

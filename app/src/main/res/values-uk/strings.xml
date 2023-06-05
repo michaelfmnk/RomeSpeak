@@ -5,8 +5,7 @@
     <string name="tab_favorites">Улюблені</string>
     <string name="sort_by">Сортувати за</string>
     <string name="sort_by_latin">Латинською</string>
-    <string name="sort_by_english">Англійською</string>
-    <string name="sort_by_ukrainian">Українською</string>
+    <string name="sort_by_current_language">Українською</string>
     <string name="search_placeholder">Пошук</string>
     <string name="clear_search">Очистити</string>
 </resources>

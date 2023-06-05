@@ -3,6 +3,7 @@ package dev.fomenko.latinhelper.data
 import androidx.compose.ui.text.intl.Locale
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.text.Collator
 
 @Entity(tableName = "phrases")
 data class Phrase(
@@ -22,9 +23,22 @@ data class Phrase(
 }
 
 enum class PhraseSort(
-    var column: String,
-    var keyExtractor: (Phrase) -> String,
+    createComparator: () -> Comparator<Phrase>,
 ) {
-    Latin("phrase", { it.phrase }),
-    English("en", { it.en }),
+    Latin({ compareBy { it.phrase } }),
+    English({ compareBy { it.en } }),
+    Ukrainian({
+        val collator = Collator.getInstance(java.util.Locale("uk", "UA"))
+        compareBy { collator.getCollationKey(it.uk) }
+    });
+
+    val comparator: Comparator<Phrase> = createComparator()
+
+    companion object {
+        fun valueOf(value: Locale): PhraseSort = when (value.language) {
+            "en" -> English
+            "uk" -> Ukrainian
+            else -> Latin
+        }
+    }
 }
