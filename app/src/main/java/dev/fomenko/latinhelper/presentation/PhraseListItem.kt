@@ -70,7 +70,7 @@ fun PhraseListItem(
                 Icon(
                     imageVector = Icons.Outlined.Star,
                     contentDescription = "Favorite",
-                    tint = if (phrase.isFavorite) MaterialTheme.colorScheme.tertiary else Color.Gray,
+                    tint = if (phrase.isFavorite) MaterialTheme.colorScheme.error else Color.Gray,
                 )
             }
         }
