@@ -14,8 +14,8 @@ android {
         applicationId "dev.fomenko.latinhelper"
         minSdk 29
         targetSdk 33
-        versionCode 4
-        versionName "0.1"
+        versionCode 5
+        versionName "0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resourceConfigurations += ['en', 'uk', 'pl']
