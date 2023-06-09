@@ -1,6 +1,8 @@
 package dev.fomenko.latinhelper.presentation
 
 import android.content.res.Configuration
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
@@ -24,6 +26,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,6 +34,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import dev.fomenko.latinhelper.data.Phrase
 import dev.fomenko.latinhelper.data.PhraseSort
 import dev.fomenko.latinhelper.ui.theme.LatinHelperTheme
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -57,20 +61,29 @@ fun PhraseListScreen(
         viewModel.loadPhrases()
     }
 
-    PhraseListScreenScaffold(bottomSheetState = sortSheetState, sheetContent = {
-        PhraseListSortSheet(onSortSelected = {
-            scope.launch {
-                sortSheetState.bottomSheetState.toggle()
-                viewModel.sortBy(it)
-            }
-        })
-    }, bottomBar = {
-        PhraseListBottomAppBar(onSortClicked = {
-            scope.launch {
-                sortSheetState.bottomSheetState.toggle()
-            }
-        })
-    }) { paddings ->
+    BackHandler(enabled = sortSheetState.bottomSheetState.isVisible) {
+        scope.launch {
+            sortSheetState.bottomSheetState.hide()
+        }
+    }
+
+    PhraseListScreenScaffold(
+        bottomSheetState = sortSheetState,
+        sheetContent = {
+            PhraseListSortSheet(onSortSelected = {
+                scope.launch {
+                    sortSheetState.bottomSheetState.toggle()
+                    viewModel.sortBy(it)
+                }
+            })
+        },
+        bottomBar = {
+            PhraseListBottomAppBar(onSortClicked = {
+                scope.launch {
+                    sortSheetState.bottomSheetState.toggle()
+                }
+            })
+        }) { paddings ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
