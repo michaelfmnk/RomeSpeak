@@ -18,7 +18,7 @@ users to expand their vocabulary.
 <div style="display:flex;">
 <a href="https://play.google.com/store/apps/details?id=dev.fomenko.latinhelper">
     <img alt="Get it on Google Play" height="80"
-        src="docs/graphics/logos/google-badge.png" />
+        src="docs/google-badge.png" />
 </a>
 </div>
 
