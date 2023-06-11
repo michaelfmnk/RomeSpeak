@@ -6,14 +6,6 @@ The RomeSpeak is an Android app that helps users learn and practice Latin phrase
 in multiple languages. It provides a collection of phrases along with their translations, allowing
 users to expand their vocabulary.
 
-## Screenshots
-
-
-|                                              |                                              |                                              |
-|----------------------------------------------|----------------------------------------------|----------------------------------------------|
-| ![Screenshot 1](screenshots/screenshot1.png) | ![Screenshot 2](screenshots/screenshot2.png) | ![Screenshot 3](screenshots/screenshot3.png) |
-
-
 ## Install
 <div style="display:flex;">
 <a href="https://play.google.com/store/apps/details?id=dev.fomenko.latinhelper">
@@ -21,6 +13,14 @@ users to expand their vocabulary.
         src="docs/google-badge.png" />
 </a>
 </div>
+
+## Screenshots
+
+
+|                                              |                                              |                                              |
+|----------------------------------------------|----------------------------------------------|----------------------------------------------|
+| ![Screenshot 1](screenshots/screenshot1.png) | ![Screenshot 2](screenshots/screenshot2.png) | ![Screenshot 3](screenshots/screenshot3.png) |
+
 
 ## Getting Started
 
