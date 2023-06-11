@@ -14,6 +14,14 @@ users to expand their vocabulary.
 | ![Screenshot 1](screenshots/screenshot1.png) | ![Screenshot 2](screenshots/screenshot2.png) | ![Screenshot 3](screenshots/screenshot3.png) |
 
 
+## Install
+<div style="display:flex;">
+<a href="https://play.google.com/store/apps/details?id=dev.fomenko.latinhelper">
+    <img alt="Get it on Google Play" height="80"
+        src="docs/graphics/logos/google-badge.png" />
+</a>
+</div>
+
 ## Getting Started
 
 To get started with the Phrase Learning App, follow these steps:
